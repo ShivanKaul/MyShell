@@ -35,6 +35,7 @@ int main () {
 
 	// The commands to match against
 	char set[] = "set";
+	char pr[] = "prompt";
 	char quit[] = "quit\n"; // newline at the end because the user will pass in
 	// a carriage return after typing the command. This
 	// is not true for set, where we would have arguments
@@ -68,12 +69,28 @@ int main () {
 				system(input);
 			}
 			else {
+				// if the command is set, then check the second word. If it's
+				// prompt (case insensitive), then set the prompt to be the third
+				// word. Else, execute the command
 				char *args1;
 				char *args2;
 				args1 = strtok(NULL, " ");
-				args2 = strtok(NULL, " ");
-				strcpy(prompt, args2);
-				prompt[strlen(prompt)-1]='\0';
+				// temp array to check if second word is prompt
+				char *checkargs1 = strdup(args1);
+				// sanitize it to lowercase
+				for (i = 0; i != '\0'; i++) {
+					checkargs1[i] = tolower(checkargs1[i]);
+				}
+				// If not prompt, then execute the command
+				if (strcmp(checkargs1, pr) != 0) {
+					system(input);
+				}
+				// set the prompt
+				else {
+					args2 = strtok(NULL, " ");
+					strcpy(prompt, args2);
+					prompt[strlen(prompt)-1]='\0';
+				}
 			}
 		}
 	}
