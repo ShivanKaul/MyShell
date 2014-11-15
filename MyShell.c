@@ -18,7 +18,7 @@
 #define MAX_PROMPT_SIZE 30 // maximum length of the prompt
 #define MAX_COMMAND_LENGTH 30 // maximum length of the command
 /*
- * Array for prompt
+ * Global structures
  */
 char *prompt;
 char *input;
