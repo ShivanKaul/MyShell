@@ -3,7 +3,6 @@
  Name        : MyShell.c
  Author      : Shivan Kaul Sahib
  Version     : 1.0
- Description : Q2 on assignment 3 for COMP 206
  ============================================================================
  */
 /*
